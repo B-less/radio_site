@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - My Radio Site{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to My Radio Site</h1>
+    <p>Stream your favorite stations anytime, anywhere.</p>
+    {% if not user.is_authenticated %}
+      <div class="auth-buttons">
+          <a href="{% url 'login' %}" class="btn-primary">Login</a>
+          <a href="{% url 'signup' %}" class="btn-primary">Sign Up</a>
+      </div>
+    {% endif %}
+</div>
+
+{% load static %}
+<style>
+    .hero {
+        background-image: url("{% static 'images/hero-bg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+
+<div class="container">
+    <h2>Featured Stations</h2>
+    <div class="station-grid">
+        {% for station in stations %}
+<a href="{% url 'station_detail' station.id %}" class="station-link">
+    <div class="station-card">
+        {% if station.image %}
+  <img src="{{ station.image.url }}" alt="{{ station.name }}">
+{% else %}
+  <img src="{% static 'images/placeholder.png' %}" alt="Placeholder image">
+{% endif %}
+
+        <h3>{{ station.name }}</h3>
+        <p>{{ station.description }}</p>
+    </div>
+</a>
+{% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% if not user.is_authenticated %}
+  <div class="auth-buttons">
+      <a href="{% url 'login' %}" class="btn-primary">Login</a>
+      <a href="{% url 'signup' %}" class="btn-primary">Sign Up</a>
+  </div>
+{% endif %}

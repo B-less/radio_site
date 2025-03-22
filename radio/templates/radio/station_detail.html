@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<a href="{% url 'station_detail' station.id %}">{{ station.name }}</a>
+
+<div class="station-container">
+    <h3>{{ station.name }}</h3>
+    <p>{{ station.description }}</p>
+    {% if station.image %}
+  <img src="{{ station.image.url }}" alt="{{ station.name }}">
+{% else %}
+  <img src="{% static 'images/placeholder.png' %}" alt="Placeholder image">
+{% endif %}
+
+    <audio controls autoplay>
+        <source src="{{ station.stream_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+{% endblock %}

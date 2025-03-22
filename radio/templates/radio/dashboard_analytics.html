@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - Analytics{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>Zenofm</h2>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="{% url 'dashboard_home' %}">Home</a></li>
+        <li><a href="{% url 'dashboard_analytics' %}" class="active">Analytics</a></li>
+        <li><a href="{% url 'dashboard_stations' %}">Stations</a></li>
+        <li><a href="{% url 'dashboard_profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="dashboard-content">
+    <header class="dashboard-header">
+      <h1>Analytics</h1>
+    </header>
+    <section class="analytics-section">
+      <p>{{ analytics_data }}</p>
+      <!-- Insert real analytics or charts here -->
+    </section>
+  </div>
+</div>
+{% endblock %}

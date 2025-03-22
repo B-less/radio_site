@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard Home{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>Zenofm</h2>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="{% url 'dashboard_home' %}" class="active">Home</a></li>
+        <li><a href="{% url 'dashboard_analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'dashboard_stations' %}">Stations</a></li>
+        <li><a href="{% url 'dashboard_profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="dashboard-content">
+    <header class="dashboard-header">
+      <h1>Dashboard</h1>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Total Listeners</h3>
+        <p>{{ total_listeners }}</p>
+      </div>
+      <div class="card">
+        <h3>Active Stations</h3>
+        <p>{{ active_stations }}</p>
+      </div>
+      <div class="card">
+        <h3>Monthly Plays</h3>
+        <p>{{ monthly_plays }}</p>
+      </div>
+    </section>
+
+    <section class="main-chart">
+      <h2>Streaming Activity</h2>
+      <div class="chart-placeholder">Chart goes here</div>
+    </section>
+  </div>
+</div>
+{% endblock %}

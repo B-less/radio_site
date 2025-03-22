@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - Stations{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>Zenofm</h2>
+    </div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="{% url 'dashboard_home' %}">Home</a></li>
+        <li><a href="{% url 'dashboard_analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'dashboard_stations' %}" class="active">Stations</a></li>
+        <li><a href="{% url 'dashboard_profile' %}">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="dashboard-content">
+    <header class="dashboard-header">
+      <h1>Your Stations</h1>
+    </header>
+    <section class="stations-section">
+      <a href="{% url 'create_station' %}" class="btn-primary">Create New Station</a>
+      <ul class="station-list">
+        {% for station in stations %}
+          <li class="station-item">
+            <h3>{{ station.name }}</h3>
+            <p>{{ station.description }}</p>
+            <p><strong>Stream URL:</strong> {{ station.stream_url }}</p>
+          </li>
+        {% empty %}
+          <li>No stations available.</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock %}
