@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'radio',
+    'radio', 
+    'whitenoise.runserver_nostatic', 
 ]
 
 MIDDLEWARE = [
