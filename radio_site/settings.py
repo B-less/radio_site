@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-$i%$mapccd5bcqisr=!l8v3p=_zflu&=%m)3f8nb77^5((h-av
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['radio.pythonanywhere.com']
+ALLOWED_HOSTS = ['radio_site.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -141,3 +141,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this
+    # Other middleware...
+]
+
+# Static file storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
