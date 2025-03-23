@@ -41,6 +41,7 @@ def create_station(request):
     if request.method == "POST":
         form = RadioStationForm(request.POST, request.FILES)
         if form.is_valid():
+            station = RadioStation.objects.filter(owner=request.user)
             station = form.save(commit=False)
             station.owner = request.user
             station.save()
